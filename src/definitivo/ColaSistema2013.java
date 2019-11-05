@@ -41,17 +41,17 @@ public class ColaSistema2013 {
 	private Tally estEspera;
 	
 	/**
-	 * Estructura que calcula el número promedio de entidades en cola
+	 * Estructura que calcula el nï¿½mero promedio de entidades en cola
 	 */
-	private Accumulate tamaño;
+	private Accumulate tamanio;
 	
 	/**
-	 * número de servidores ocuapdos
+	 * nï¿½mero de servidores ocuapdos
 	 */
 	private int ocupados;
 	
 	/**
-	 * contador del número de llegadas al sistema
+	 * contador del nï¿½mero de llegadas al sistema
 	 */
 	private int llegadas;
 	
@@ -72,7 +72,7 @@ public class ColaSistema2013 {
 		numServidores=numServidoresf;
 		genServicios= new ExponentialGen(new MRG32k3a(),tServicios);
 		estEspera=new Tally("Tiempos de espera");
-		tamaño=new Accumulate("Tamaño de la cola");
+		tamanio=new Accumulate("Tamaï¿½o de la cola");
 		espera= new LinkedList<Solicitud>();
 		ocupados=0;
 		
@@ -80,10 +80,10 @@ public class ColaSistema2013 {
 	
 	
 	//***************************
-	// Métodos *******************
+	// Mï¿½todos *******************
 	//*****************************
 	/**
-	 * Actualiza el número de llegadas al sistema
+	 * Actualiza el nï¿½mero de llegadas al sistema
 	 */
 	public void actualizarLlegadas()
 	{
@@ -91,7 +91,7 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * retorna el númeor de llegadas al sistema
+	 * retorna el nï¿½meor de llegadas al sistema
 	 * @return
 	 */
 	public int darLlegadas()
@@ -108,7 +108,7 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Retorna el número de servidores ocupados
+	 * Retorna el nï¿½mero de servidores ocupados
 	 * @return
 	 */
 	public int darOcupados()
@@ -126,7 +126,7 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Agrega un paquete p a la cola, pero en la primera posición de la misma
+	 * Agrega un paquete p a la cola, pero en la primera posiciï¿½n de la misma
 	 * @param p
 	 */
 	public void agregarAColadePrimero(Solicitud s)
@@ -136,7 +136,7 @@ public class ColaSistema2013 {
 	
 	
 	/**
-	 * Retorna el tamaño de la cola
+	 * Retorna el tamaï¿½o de la cola
 	 * @return
 	 */
 	public int darTamanioCola()
@@ -145,12 +145,12 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Actualiza las estadisticas de tamaño
+	 * Actualiza las estadisticas de tamaï¿½o
 	 * @param t
 	 */
 	public void actualizarEstadsticasTamanio(int t)
 	{
-		tamaño.update(t);
+		tamanio.update(t);
 	}
 	
 	/**
@@ -172,7 +172,7 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Aumenta el número de servidores ocupados
+	 * Aumenta el nï¿½mero de servidores ocupados
 	 */
 
 	public void actualizarOcupados() {
@@ -180,7 +180,7 @@ public class ColaSistema2013 {
 		
 	}
 	/**
-	 * disminuye el número de servidores ocupados
+	 * disminuye el nï¿½mero de servidores ocupados
 	 */
 
 	public void rOcupados() {
@@ -188,14 +188,14 @@ public class ColaSistema2013 {
 	ocupados--;	
 	}
 	/**
-	 * Retorna el númeor de servidores de la cola
+	 * Retorna el nï¿½meor de servidores de la cola
 	 */
 	public int darNumServidores()
 	{
 		return numServidores;
 	}
 	/**
-	 * Cambia el número de servidores de la cola
+	 * Cambia el nï¿½mero de servidores de la cola
 	 */
 	public void cambiarNumServidores(int n)
 	{
@@ -203,7 +203,7 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Retorna el estadístico del tiempo promedio en el sistema
+	 * Retorna el estadï¿½stico del tiempo promedio en el sistema
 	 * @return
 	 */
 	public Tally darEspera()
@@ -212,12 +212,12 @@ public class ColaSistema2013 {
 	}
 	
 	/**
-	 * Retorna el estadístico del númeor promedio de entidades en el sistema
+	 * Retorna el estadï¿½stico del nï¿½meor promedio de entidades en el sistema
 	 * @return
 	 */
 	public Accumulate darTamanio()
 	{
-		return tamaño;
+		return tamanio;
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class ColaSistema2013 {
 	 */
 
 	public void renovarAcc(){
-		tamaño=new Accumulate("Tamaño de la cola");
+		tamanio=new Accumulate("Tamaï¿½o de la cola");
 	}
 	public int darServidoresLibres()
 	{

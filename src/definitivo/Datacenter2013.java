@@ -25,7 +25,7 @@ import umontreal.iro.lecuyer.stat.Tally;
 
 
 /**
- * Clase principal de la simulación que modela un Datacenter con 3 clusters 
+ * Clase principal de la simulaciï¿½n que modela un Datacenter con 3 clusters 
  * de servidores (web, database, aplicaciones)
  * 
  * @author David Sanchez
@@ -93,16 +93,16 @@ public class Datacenter2013 {
 	private  RandomVariateGen[] genLlegadas;
 	
 	/**
-	 * Generador de números aletorios que siguen una distribución uniforme
+	 * Generador de nï¿½meros aletorios que siguen una distribuciï¿½n uniforme
 	 */
 	private static final RandomVariateGen uniforme=new UniformGen(new MRG32k3a(),0.0,1.0);
 	/**
-	 * Generador de números aletorios que siguen una distribución exponencial
+	 * Generador de nï¿½meros aletorios que siguen una distribuciï¿½n exponencial
 	 */
 	private static final RandomVariateGen tMuerto=new ExponentialGen(new MRG32k3a(),10000);
 	
 	/**
-	 * Estadístico del tiempo de espera promedio en el datacenter
+	 * Estadï¿½stico del tiempo de espera promedio en el datacenter
 	 */
 	private Tally []estEspera;
 
@@ -114,30 +114,30 @@ public class Datacenter2013 {
 	private double[] probOcur;
 	
 	/**
-	 * Matriz con los datos de alpha y gamma para el pronóstico de los aribos por cliente
+	 * Matriz con los datos de alpha y gamma para el pronï¿½stico de los aribos por cliente
 	 */
 	private double [][] clientesPronostico; 
 	/**
-	 * Arreglo que contiene las matrices de transición dependiendo del cliente
+	 * Arreglo que contiene las matrices de transiciï¿½n dependiendo del cliente
 	 */
 	private double[][][] matrices;
 	/**
-	 * El número de servidores que se encuentran apagados
+	 * El nï¿½mero de servidores que se encuentran apagados
 	 */
 	
 	private int servidoresApagados;
 
 	/**
-	 * El intervalo actual de la simulación
+	 * El intervalo actual de la simulaciï¿½n
 	 */
 	private int intervaloActual;
 	
 	/**
-	 * Atributo estatico que representa el flujo de datos de salida para las estadisticas de la simulación en cada 
+	 * Atributo estatico que representa el flujo de datos de salida para las estadisticas de la simulaciï¿½n en cada 
 	 */
 	private static PrintWriter[] out;
 	/**
-	 * Numero de intervalos en la simulación
+	 * Numero de intervalos en la simulaciï¿½n
 	 */
 	private int numIntervalos;
 	
@@ -152,51 +152,51 @@ public class Datacenter2013 {
 	 */
 	private MatlabProxy com;
 	
-	// - - - Atributos relacionados con los resultados obtenidos en la simulación y la optimización
+	// - - - Atributos relacionados con los resultados obtenidos en la simulaciï¿½n y la optimizaciï¿½n
 	//----------- ----      ----    -------
 	/**
-	 * Número de servidores trabajando en un intervalo de tiempo
+	 * Nï¿½mero de servidores trabajando en un intervalo de tiempo
 	 */
 	private int[] nWork;
 	
 	/**
-	 * Valor teórico de la función objetivo en cada intervalo de tiempo
+	 * Valor teï¿½rico de la funciï¿½n objetivo en cada intervalo de tiempo
 	 */
 	private double [] fObjTeo;
 	
 	/**
-	 * Valor de la función objetivo al realizar la simulación
+	 * Valor de la funciï¿½n objetivo al realizar la simulaciï¿½n
 	 */
 	
 	private double [] fObjSim;
 	
 	/**
-	 * Valor del tiempo promedio de respuesta (tanto teórico como simulado)
+	 * Valor del tiempo promedio de respuesta (tanto teï¿½rico como simulado)
 	 * [teorico o sim] [cliente] [intervalo]
 	 */
 	private double [][][] tiempoAv;
 	
 	/**
-	 * Energía usada de la red eléctrica
+	 * Energï¿½a usada de la red elï¿½ctrica
 	 */
 	private double [] xGrid;
 	
 	/**
-	 * Energía renovable vendida
+	 * Energï¿½a renovable vendida
 	 */
 	private double [] Grs;
 	/**
-	 * Energía no renovable vendida
+	 * Energï¿½a no renovable vendida
 	 */
 	private double [] Gnrs;
 	
 	/**
-	 * Energía no renovable usada en el datacenter
+	 * Energï¿½a no renovable usada en el datacenter
 	 */
 	private double [] Gnr;
 	
 	/**
-	 * Número de servidores usados en cada cluster, en cada intervalo
+	 * Nï¿½mero de servidores usados en cada cluster, en cada intervalo
 	 */
 	
 	private double[][]nServs;
@@ -234,7 +234,7 @@ public class Datacenter2013 {
 	
 	/**
 	 * Para el escenario 6
-	 * tiempo de solución del algoritmo de optmización
+	 * tiempo de soluciï¿½n del algoritmo de optmizaciï¿½n
 	 */
 	
 	private double [] tiempoSolucion;
@@ -408,11 +408,11 @@ public Datacenter2013(int escN, double indPrN, double indPnrN) throws Exception
 }
 
 //*******************************************
-//Métodos ***********************************
+//Mï¿½todos ***********************************
 //*******************************************
 /**
- * Realiza el pronóstico de los parámetros que entrarán en el algoritmo de optimización
- * por ahora sólo se está pronosticando una traza de prueba!!!
+ * Realiza el pronï¿½stico de los parï¿½metros que entrarï¿½n en el algoritmo de optimizaciï¿½n
+ * por ahora sï¿½lo se estï¿½ pronosticando una traza de prueba!!!
  * @throws MatlabInvocationException 
  */
 public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationException {
@@ -421,7 +421,7 @@ public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationExcep
 	
 	if(intervaloActual==1)
 	{
-		//Creación de los parámetros para la prediccion de una variable
+		//Creaciï¿½n de los parï¿½metros para la prediccion de una variable
 		com.eval("s="+numIntervalos+";");
 		double dat=1;
 		com.eval("mc=mc.*"+dat+";");
@@ -432,16 +432,16 @@ public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationExcep
 		
 			com.eval("datos_c"+i+"=c"+i+";");
 			
-			//s es el tamaño de la estacionalidad!!! (¿el cual deberia ser el num de Intervalos?)
+			//s es el tamaï¿½o de la estacionalidad!!! (ï¿½el cual deberia ser el num de Intervalos?)
 			
 			com.eval("alpha_c"+i+"="+clientesPronostico[i-1][0]+";gamma_c"+i+"="+clientesPronostico[i-1][1]+";t_c"+i+"=s;x_init_c"+i+"=datos_c"+i+"(1:s);");
 			
-			//Ahora viene la predicción del primer intervalo
+			//Ahora viene la predicciï¿½n del primer intervalo
 			
-			//Inicialización del método
+			//Inicializaciï¿½n del mï¿½todo
 			com.eval("[L_c"+i+",S_c"+i+"]=init(s,x_init_c"+i+")");
 			
-			//Primera predicción
+			//Primera predicciï¿½n
 			
 			com.eval("F_c"+i+"=predict_1(L_c"+i+",S_c"+i+",t_c"+i+",[],s);t_c"+i+"=t_c"+i+"+1");
 		
@@ -450,7 +450,7 @@ public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationExcep
 		
 	
 		
-		//s es el tamaño de la estacionalidad!!! 
+		//s es el tamaï¿½o de la estacionalidad!!! 
 		
 		com.eval("alpha_Gr_solar=0.5;gamma_Gr_solar=0.5;t_Gr_solar=s;x_init_Gr_solar=datos_Gr_solar(1:s);");
 		com.eval("alpha_Gr_viento=0.5;gamma_Gr_viento=0.5;t_Gr_viento=s;x_init_Gr_viento=datos_Gr_viento(1:s);");
@@ -458,16 +458,16 @@ public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationExcep
 		com.eval("alpha_Pnr=0.5;gamma_Pnr=0.5;t_Pnr=s;x_init_Pnr=datos_Pnr(1:s);");
 		com.eval("alpha_Cgrid=0.5;gamma_Cgrid=0.5;t_Cgrid=s;x_init_Cgrid=datos_Cgrid(1:s);");
 		
-		//Ahora viene la predicción del primer intervalo
+		//Ahora viene la predicciï¿½n del primer intervalo
 		
-		//Inicialización del método
+		//Inicializaciï¿½n del mï¿½todo
 		com.eval("[L_Gr_solar,S_Gr_solar]=init(s,x_init_Gr_solar)");
 		com.eval("[L_Gr_viento,S_Gr_viento]=init(s,x_init_Gr_viento)");
 		com.eval("[L_Pr,S_Pr]=init(s,x_init_Pr)");
 		com.eval("[L_Pnr,S_Pnr]=init(s,x_init_Pnr)");
 		com.eval("[L_Cgrid,S_Cgrid]=init(s,x_init_Cgrid)");
 		
-		//Primera predicción
+		//Primera predicciï¿½n
 		com.eval("F_Gr_solar=predict_1(L_Gr_solar,S_Gr_solar,t_Gr_solar,[],s);t_Gr_solar=t_Gr_solar+1");
 		retorno[numClientes]=((double[]) com.getVariable("F_Gr_solar(1)"))[0];
 		com.eval("F_Gr_viento=predict_1(L_Gr_viento,S_Gr_viento,t_Gr_viento,[],s);t_Gr_viento=t_Gr_viento+1");
@@ -501,7 +501,7 @@ public double[] pronosticarParametrosOptimizacion() throws MatlabInvocationExcep
 	return retorno;
 }
 /**
- * Retorna un número entre 0 y 1 con distribución uniforme
+ * Retorna un nï¿½mero entre 0 y 1 con distribuciï¿½n uniforme
  * @return
  */
 public static double lanzarDado()
@@ -512,7 +512,7 @@ public static double lanzarDado()
 	
 }
 /**
- * Retorna la realización del tiempo muerto
+ * Retorna la realizaciï¿½n del tiempo muerto
  * @return
  */
 public static double darTiempoMuerto()
@@ -576,7 +576,7 @@ public Cluster2013 darDB()
 	return dataB;
 }
 /**
- * Ejecuta la simulación del comportamiento del datacenter
+ * Ejecuta la simulaciï¿½n del comportamiento del datacenter
  * @param tiempoFinal
  */
 public void simular(double tiempoFinal)
@@ -651,7 +651,7 @@ public void imprimirResultados() throws Exception
 
 
 /**
- * Cálculo de la fobj con los datos de la simulación
+ * Cï¿½lculo de la fobj con los datos de la simulaciï¿½n
  * @param tAv
  * @throws Exception 
  */
@@ -682,7 +682,7 @@ private void calcularFobjSim(double[] tAv) throws Exception {
 }
 
 /**
- * Retorna el cluster asociado al Id parámetro
+ * Retorna el cluster asociado al Id parï¿½metro
  */
 public Cluster2013 darCluster(int ID)
 {
@@ -766,7 +766,7 @@ public static double Redondear(double numero,int digitos)
 }
 
 /**
- * Revisa si el número de servidores en cada cluster sumado en total de el total de servidores
+ * Revisa si el nï¿½mero de servidores en cada cluster sumado en total de el total de servidores
  */
 public boolean check()
 {
@@ -782,12 +782,12 @@ public MatlabProxy darCom()
 }
 
 /**
- * Ejecuta el algoritmo de optmización desde matlab. Recibe por parámetro:
- * - arribos (el vector con las tasas de arribos pronosticadas para el próximo intervalo)
- * - Gr (Energía renovable disponible que se pronosticó)
- * - Pr (Precio de la energía renovable en ese intervalo)
- * - Pnr (Precio de la energía no renovable en ese intervalo)
- * - Cgrid (Costo de la energía de la red eléctrica)
+ * Ejecuta el algoritmo de optmizaciï¿½n desde matlab. Recibe por parï¿½metro:
+ * - arribos (el vector con las tasas de arribos pronosticadas para el prï¿½ximo intervalo)
+ * - Gr (Energï¿½a renovable disponible que se pronosticï¿½)
+ * - Pr (Precio de la energï¿½a renovable en ese intervalo)
+ * - Pnr (Precio de la energï¿½a no renovable en ese intervalo)
+ * - Cgrid (Costo de la energï¿½a de la red elï¿½ctrica)
  * - Nwt_1 (servidores trabajando en el intervalo anterior)
  * @throws Exception 
  */
@@ -810,7 +810,7 @@ public void actualizarnWork(int param)
 }
 
 /**
- * Realiza las gráficas de los resultados obtenidos al correr el programa
+ * Realiza las grï¿½ficas de los resultados obtenidos al correr el programa
  * @throws MatlabInvocationException 
  */
 public void realizarGraficas() throws MatlabInvocationException
@@ -944,7 +944,7 @@ public void realizarGraficas() throws MatlabInvocationException
 }
 
 /**
- * Realiza las gráficas de los resultados obtenidos al correr el programa
+ * Realiza las grï¿½ficas de los resultados obtenidos al correr el programa
  * @throws MatlabInvocationException 
  */
 public void realizarGraficasEng() throws MatlabInvocationException
@@ -1202,7 +1202,7 @@ try{
 				d.promedioVpr();
 				d.promedioVpnr();
 				a.println("Para Pr="+Pr[i]+"y Pnr="+Pnr[j]+":  "+Datacenter2013.Redondear(d.darVpr(), 3)+" ||| "+Datacenter2013.Redondear(d.darVpnr(), 3)+" ||| "+(Datacenter2013.Redondear(d.darVpr(), 3)+Datacenter2013.Redondear(d.darVpnr(), 3)));
-				//d.graficarEnergía();
+				//d.graficarEnergï¿½a();
 				d.darCom().disconnect();
 				
 			}
@@ -1217,7 +1217,7 @@ catch (Exception e)
 	e.printStackTrace();
 }
 	}
-	private void graficarEnergía() throws Exception {
+	private void graficarEnergia() throws Exception {
 		com.eval("hora=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]"); //// ojo!!!
 		
 		double []hora=((double[]) com.getVariable("hora"));
