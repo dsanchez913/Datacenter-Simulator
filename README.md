@@ -1,4 +1,4 @@
-# Datacenter-Simulator
+# Optimal energy-aware resource allocation in SLA constrained data centers in a Smart Grid Environment
 
 This was my masters degree dissertation project.
 
@@ -19,5 +19,5 @@ For the simulation, I used the SSJ library: http://simul.iro.umontreal.ca/ssj/
 For using MATLAB from a Java app, I used the matlabcontrol library: https://code.google.com/archive/p/matlabcontrol/
 
 
-You can read the research paper i submitted at my university here: https://www.dropbox.com/s/gxpe1moa4nazk4k/articulo.pdf?dl=0
+You can read the research paper I submitted at my university here: https://www.dropbox.com/s/gxpe1moa4nazk4k/articulo.pdf?dl=0
 
