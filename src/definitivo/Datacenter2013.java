@@ -49,7 +49,7 @@ public class Datacenter2013 {
 	
 
 	
-	//Path to YALMIP --
+	//Path to YALMIP -- must be changed to YOUR path!!!
 	public static final String path_YALMIP="/Users/dsanchez/Dropbox/YALMIP-master";
 	
 	
