@@ -47,18 +47,11 @@ public class Datacenter2013 {
 	
 	public static final int TOTAL_SERVIDORES=500;
 	
-	//Sala Asistentes
-	//public static final String path_YALMIP="C:/Users/Usuario1/Downloads/YALMIP";
-	
-	//Laptop David
-	public static final String path_YALMIP="C:/Users/David/Dropbox/Maestria_Uniandes/Tesis/YALMIP";
-	
-	//Juan Fernando
-	//public static final String path_YALMIP="D:/DocumentosJuan/Dropbox/Tesis-ProyGrado/Tesis David Sanchez/YALMIP";
-	
-	//PC David
-	//public static final String path_YALMIP="D:/Program Files (x86)/Matlab/YALMIP";
 
+	
+	//Path to YALMIP --
+	public static final String path_YALMIP="/Users/dsanchez/Dropbox/YALMIP-master";
+	
 	
 	//******************************************
 	//Atributos *********************************
@@ -308,22 +301,11 @@ public Datacenter2013(int escN, double indPrN, double indPnrN) throws Exception
 
 	lector.close();
 	
-	// Conexion con matlab
-	
-	//Se debe cambiar la localizacion de matlab cada vez que se cambie de computador!!!!
-	
-	//Sala Asistentes
-	//MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder().setMatlabLocation("C:/Program Files/MATLAB/R2012a/bin/matlab.exe").setMatlabStartingDirectory(new File("./Java_Matlab/escenario_base")).setUsePreviouslyControlledSession(true).build();
+	// Matlab connection
 	
 	//Laptop David
-	MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder().setMatlabLocation("C:/Program Files/MATLAB/R2010a/bin/matlab.exe").setMatlabStartingDirectory(new File("./Java_Matlab/escenario_base")).setUsePreviouslyControlledSession(true).build();
+	MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder().setMatlabLocation("/Applications/Matlab.app/bin/matlab").setMatlabStartingDirectory(new File("./Java_Matlab/escenario_base")).setUsePreviouslyControlledSession(true).build();
 	
-	// Juan Fernando
-	//MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder().setMatlabLocation("C:/Program Files/MATLAB/R2012b/bin/matlab.exe").setMatlabStartingDirectory(new File("./Java_Matlab/escenario_base")).setUsePreviouslyControlledSession(true).build();
-	
-	//PC David
-	//MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder().setMatlabLocation("D:/Program Files (x86)/Matlab/bin/matlab.exe").setMatlabStartingDirectory(new File("./Java_Matlab/escenario_base")).setUsePreviouslyControlledSession(true).build();
-
     MatlabProxyFactory factory = new MatlabProxyFactory(options);
     com=factory.getProxy();
     com.eval("clear all;clc;");
